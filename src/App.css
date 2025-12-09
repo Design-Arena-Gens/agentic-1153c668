@@ -1,0 +1,222 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) 1fr;
+  width: min(1200px, 100%);
+  min-height: 100vh;
+  padding: 64px clamp(24px, 5vw, 48px);
+  gap: clamp(24px, 6vw, 48px);
+}
+
+.sidebar {
+  background: var(--panel);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  padding: 32px clamp(20px, 4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  backdrop-filter: blur(24px);
+}
+
+.sidebar-header h1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.sidebar-header p {
+  color: rgba(255, 255, 255, 0.68);
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.group-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.control-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 120px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.control-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+input[type="number"],
+textarea,
+input[type="color"] {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 12px;
+  color: inherit;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 64px;
+  max-height: 160px;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.preset {
+  position: relative;
+  border-radius: 14px;
+  padding: 14px 12px;
+  color: #0f1014;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preset span {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 999px;
+  padding: 4px 10px;
+  display: inline-block;
+  font-size: 0.75rem;
+}
+
+.preset:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.preset-active {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.alignment {
+  display: flex;
+  gap: 6px;
+}
+
+.alignment-button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.alignment-button:hover {
+  transform: translateY(-1px);
+}
+
+.alignment-active {
+  background: rgba(91, 139, 247, 0.2);
+  border-color: rgba(91, 139, 247, 0.35);
+  color: #dbe4ff;
+}
+
+.action {
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action.primary {
+  margin-top: auto;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(60, 102, 255, 0.35);
+}
+
+.action.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.action:hover {
+  transform: translateY(-1px);
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 20px);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: clamp(12px, 3vw, 24px);
+}
+
+@media (max-width: 1080px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 32px clamp(16px, 5vw, 32px);
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .preview {
+    order: 1;
+  }
+
+  .canvas-wrapper {
+    aspect-ratio: 4 / 5;
+  }
+}
